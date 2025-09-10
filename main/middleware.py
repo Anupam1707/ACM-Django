@@ -5,7 +5,6 @@ class AllowIframeOnlyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if not settings.DEBUG:
             if request.path.startswith(settings.STATIC_URL):
                 return self.get_response(request)
 
@@ -19,4 +18,3 @@ class AllowIframeOnlyMiddleware:
                 return self.get_response(request)
 
             return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
-        return self.get_response(request)
