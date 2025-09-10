@@ -1,7 +1,7 @@
 from django.http import HttpResponseForbidden
 from django.conf import settings
 
-local = False
+local = settings.DEBUG
 
 class AllowIframeOnlyMiddleware:
     def __init__(self, get_response):
