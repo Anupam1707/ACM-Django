@@ -49,7 +49,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
+CSP_FRAME_ANCESTORS = ("'self'", 'nmimsindore.acm.org')
+X_FRAME_OPTIONS = 'DENY'
 
 ROOT_URLCONF = 'acm_django.urls'
 
