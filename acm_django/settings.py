@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
 ]
 
-CSP_FRAME_ANCESTORS = ("'self'", 'nmimsindore.acm.org')
+CSP_FRAME_ANCESTORS = ('nmimsindore.acm.org')
 
 ROOT_URLCONF = 'acm_django.urls'
 
