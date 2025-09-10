@@ -5,16 +5,19 @@ class AllowIframeOnlyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-            if request.path.startswith(settings.STATIC_URL):
-                return self.get_response(request)
+        print(f"Request to {request.path} from referer: {request.META.get('HTTP_REFERER')}")
+        # return self.get_response(request) # for development purpose only, comment this line for production
+    
+        if request.path.startswith(settings.STATIC_URL):
+            return self.get_response(request)
 
-            elif request.path.startswith('/admin/'):
-                return self.get_response(request)
+        elif request.path.startswith('/admin/'):
+            return self.get_response(request)
 
-            allowed_referer = 'https://nmimsindore.acm.org'
-            referer = request.META.get('HTTP_REFERER')
+        allowed_referer = 'https://nmimsindore.acm.org'
+        referer = request.META.get('HTTP_REFERER')
 
-            if referer and referer.startswith(allowed_referer):
-                return self.get_response(request)
+        if referer and referer.startswith(allowed_referer):
+            return self.get_response(request)
 
-            return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
+        return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
