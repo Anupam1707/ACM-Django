@@ -41,18 +41,16 @@ INSTALLED_APPS = [
     'main',
 ]
 
-# settings.py
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'main.middleware.AllowIframeOnlyMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'csp.middleware.CSPMiddleware',
 ]
-
 CSP_FRAME_ANCESTORS = ('nmimsindore.acm.org',)
 
 ROOT_URLCONF = 'acm_django.urls'
