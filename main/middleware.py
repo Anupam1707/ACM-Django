@@ -9,8 +9,10 @@ class AllowIframeOnlyMiddleware:
         if request.path.startswith(settings.STATIC_URL):
             return self.get_response(request)
 
-        allowed_referer = 'https://nmimsindore.acm.org'
+        elif request.path.startswith('/admin/'):
+            return self.get_response(request)
 
+        allowed_referer = 'https://nmimsindore.acm.org'
         referer = request.META.get('HTTP_REFERER')
 
         if referer and referer.startswith(allowed_referer):
