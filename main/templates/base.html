@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACM NMIMS Indore</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+    </div>
+
+    <div class="grid-bg"></div>
+
+    {% block page_loader %}
+    {% endblock %}
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}" id="navbarBrand">
+                <i class="fas fa-code me-2"></i>ACM NMIMS Indore
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'team' %}">Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="content-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="social-links">
+                        {% for link in social_links %}
+                        <a href="{{ link.url }}" class="{{ link.name|lower }}" target="_blank" rel="noopener noreferrer">
+                            <i class="{{ link.icon_class }}"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <ul class="navbar-nav d-flex flex-row justify-content-center mt-3">
+                        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'team' %}">Team</a></li>
+                    </ul>
+                    <p style="margin-top: 1rem; margin-bottom: 0; color: var(--text-secondary);">&copy; 2025 ACM NMIMS Indore. All rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block page_loader %}
+<div class="page-loader" id="pageLoader">
+    <div class="loader"></div>
+    <div class="loader-text">Loading ACM NMIMS...</div>
+    <div class="loading-progress">
+        <div class="loading-bar" id="loadingBar"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="particles" id="particles"></div>
+    <div class="code-rain" id="codeRain"></div>
+
+    <div class="container">
+        <div class="hero-content">
+            <h1 id="heroTitle">ACM NMIMS Indore</h1>
+            <p id="heroSubtitle">Advancing Computing as a Science & Profession</p>
+            <a href="{% url 'about' %}" class="cta-button" id="ctaButton">
+                <i class="fas fa-rocket me-2"></i>Explore Our Journey
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="content-section" id="team">
+    <div class="container">
+        <h2 class="section-title">Our Team</h2>
+        <h3 class="text-center team-subtitle">Faculty Coordinators</h3>
+        <div class="row justify-content-center">
+            {% for member in faculty_coordinators %}
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="team-member-img">
+                    {% else %}
+                    <img src="" alt="{{ member.name }}" class="team-member-img" style="display: none;">
+                    {% endif %}
+                    <h4>{{ member.name }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <h3 class="text-center team-subtitle">ACM 2025-26</h3>
+        <div class="row justify-content-center">
+            {% for member in acm_team %}
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="team-member-img">
+                    {% else %}
+                    <img src="" alt="{{ member.name }}" class="team-member-img" style="display: none;">
+                    {% endif %}
+                    <h4>{{ member.name }}</h4>
+                    <p>{{ member.position }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <h3 class="text-center team-subtitle">ACM-W 2025-26</h3>
+        <div class="row justify-content-center">
+            {% for member in acmw_team %}
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="team-member-img">
+                    {% else %}
+                    <img src="" alt="{{ member.name }}" class="team-member-img" style="display: none;">
+                    {% endif %}
+                    <h4>{{ member.name }}</h4>
+                    <p>{{ member.position }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <h3 class="text-center team-subtitle">LEADS 2025-26</h3>
+        <div class="row justify-content-center">
+            {% for member in leads_team %}
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="team-member-img">
+                    {% else %}
+                    <img src="" alt="{{ member.name }}" class="team-member-img" style="display: none;">
+                    {% endif %}
+                    <h4>{{ member.name }}</h4>
+                    <p>{{ member.position }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

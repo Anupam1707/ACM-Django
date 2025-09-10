@@ -1,21 +1,26 @@
 from django.http import HttpResponseForbidden
 from django.conf import settings
 
+local = False
+
 class AllowIframeOnlyMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path.startswith(settings.STATIC_URL):
-            return self.get_response(request)
+        if not local:
+            if request.path.startswith(settings.STATIC_URL):
+                return self.get_response(request)
 
-        elif request.path.startswith('/admin/'):
-            return self.get_response(request)
+            elif request.path.startswith('/admin/'):
+                return self.get_response(request)
 
-        allowed_referer = 'https://nmimsindore.acm.org'
-        referer = request.META.get('HTTP_REFERER')
+            allowed_referer = 'https://nmimsindore.acm.org'
+            referer = request.META.get('HTTP_REFERER')
 
-        if referer and referer.startswith(allowed_referer):
+            if referer and referer.startswith(allowed_referer):
+                return self.get_response(request)
+        else:
             return self.get_response(request)
 
         return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="content-section events-section" id="events">
+    <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="row justify-content-center">
+            {% for event in events %}
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="{{ event.icon }}"></i>
+                    </div>
+                    <h4>{{ event.title }}</h4>
+                    <p>{{ event.description }}</p>
+                    <small style="color: var(--text-muted);"><i class="fas fa-calendar me-2"></i>{{ event.date }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
