@@ -5,7 +5,6 @@ class AllowIframeOnlyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        print(f"Request to {request.path} from referer: {request.META.get('HTTP_REFERER')}")
         # return self.get_response(request) # for development purpose only, comment this line for production
     
         if request.path.startswith(settings.STATIC_URL):
@@ -14,10 +13,12 @@ class AllowIframeOnlyMiddleware:
         elif request.path.startswith('/admin/'):
             return self.get_response(request)
 
-        allowed_referer = 'https://nmimsindore.acm.org'
+        allowed_referers = ['https://nmimsindore.acm.org', 'https://acm-django.onrender.com']
         referer = request.META.get('HTTP_REFERER')
 
-        if referer and referer.startswith(allowed_referer):
-            return self.get_response(request)
+        if referer:
+            for allowed_referer in allowed_referers:
+                if referer.startswith(allowed_referer):
+                    return self.get_response(request)
 
         return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
