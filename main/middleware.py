@@ -5,8 +5,9 @@ class AllowIframeOnlyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # return self.get_response(request) # for development purpose only, comment this line for production
-    
+        if settings.DEBUG:
+            return self.get_response(request)
+        
         if request.path.startswith(settings.STATIC_URL):
             return self.get_response(request)
 
