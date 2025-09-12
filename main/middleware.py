@@ -8,7 +8,7 @@ class AllowIframeOnlyMiddleware:
         if settings.DEBUG:
             return self.get_response(request)
 
-        if request.path.startswith(settings.STATIC_URL) or request.path.startswith(settings.MEDIA_URL):
+        if ["static", "media"] in request.path:
             return self.get_response(request)
 
         elif request.path.startswith('/admin/'):
