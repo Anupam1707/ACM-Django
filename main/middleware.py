@@ -1,14 +1,15 @@
 from django.http import HttpResponseForbidden
-from django.conf import settings
+import os
+
 class AllowIframeOnlyMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        if settings.DEBUG:
+        if os.environ.get('DEVELOPMENT') == 'True':
             return self.get_response(request)
 
-        if ["static", "media"] in request.path:
+        if "static" in request.path or "media" in request.path:
             return self.get_response(request)
 
         elif request.path.startswith('/admin/'):
