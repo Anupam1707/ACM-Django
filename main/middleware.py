@@ -7,20 +7,18 @@ class AllowIframeOnlyMiddleware:
 
     def __call__(self, request):
         if os.environ.get('DEVELOPMENT') == 'True':
+            print(os.environ.get('DEVELOPMENT'), request.path)
             return self.get_response(request)
+        else:
+            if any(segment in request.path for segment in ["static", "media"]):
+                return self.get_response(request)
 
-        if "static" in request.path or "media" in request.path:
-            return self.get_response(request)
+            allowed_referers = ['https://nmimsindore.acm.org', 'https://acm-django.onrender.com']
+            referer = request.META.get('HTTP_REFERER')
 
-        elif request.path.startswith('/admin/'):
-            return self.get_response(request)
-
-        allowed_referers = ['https://nmimsindore.acm.org', 'https://acm-django.onrender.com']
-        referer = request.META.get('HTTP_REFERER')
-
-        if referer:
-            for allowed_referer in allowed_referers:
-                if referer.startswith(allowed_referer):
-                    return self.get_response(request)
+            if referer:
+                for allowed_referer in allowed_referers:
+                    if referer.startswith(allowed_referer):
+                        return self.get_response(request)
 
         return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
