@@ -3,15 +3,18 @@ import sys
 import threading
 import time
 import urllib.request
+import ssl
+import certifi
 
 
 def ping_server():
     """Pings the server to keep it alive."""
     url = "https://acm-django.onrender.com"
     ping_interval_seconds = 300
+    ssl_context = ssl.create_default_context(cafile=certifi.where())
     while True:
         try:
-            with urllib.request.urlopen(url) as response:
+            with urllib.request.urlopen(url, context=ssl_context) as response:
                 if response.getcode() == 200:
                     print(f"Successfully pinged {url}. Status code: 200")
                 else:

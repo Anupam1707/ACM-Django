@@ -45,3 +45,14 @@ def team(request):
         'social_links': social_links,
     }
     return render(request, 'team.html', context)
+
+def photogallery(request):
+    try:
+        social_links = SocialLink.objects.all()
+        context = {
+            'social_links': social_links,
+        }
+        return render(request, 'photogallery.html', context)
+    except Exception as e:
+        print(e)
+        raise e

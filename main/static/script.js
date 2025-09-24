@@ -438,6 +438,32 @@ document.addEventListener('DOMContentLoaded', function() {
     initCursorTrail();
     initMagneticEffect();
     initKeyboardNavigation();
+
+    // Modal functionality
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        const modalImage = document.getElementById('modalImage');
+        const photoItems = document.querySelectorAll('.photo-item');
+
+        photoItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imageSrc = item.getAttribute('data-src');
+                modal.style.display = 'block';
+                modalImage.src = imageSrc;
+            });
+        });
+
+        const closeBtn = modal.querySelector('.close');
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
 });
 
 window.addEventListener('resize', function() {

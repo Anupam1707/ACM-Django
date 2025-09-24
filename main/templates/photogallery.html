@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'photogallery.css' %}">
+
+<div class="floating-particles" id="particles"></div>
+
+<header class="header">
+    <h1>ACM Club</h1>
+    <p>Journey Through Our Amazing Events & Memories</p>
+</header>
+
+<div class="timeline">
+
+    <div class="timeline-item">
+        <div class="timeline-date">January 2025</div>
+        <div class="timeline-content">
+            <h3 class="event-title">🚀 ACM Launch </h3>
+            <p class="event-description">
+            The official launch of our ACM Student Chapter marked a new beginning in our journey of technological excellence.
+            Faculty members, industry professionals, and students came together to inaugurate the club and outline our vision
+            for fostering innovation and collaboration in computer science.
+            </p>
+            <div class="photo-grid">
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_1.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_1.jpg' %}" alt="Photo 1">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_2.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_2.jpg' %}" alt="Photo 2">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_5.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_5.jpg' %}" alt="Photo 3">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_7.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_7.jpg' %}" alt="Photo 4">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_6.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_6.jpg' %}" alt="Photo 5">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_3.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_3.jpg' %}" alt="Photo 6">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_8.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_8.jpg' %}" alt="Photo 7">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_launch/photo_4.jpg' %}">
+                    <img src="{% static 'images/acm_launch/photo_4.jpg' %}" alt="Photo 8">
+                </div>
+            </div>
+            <div class="event-stats">
+                <div class="stat-item">👥 80+ Attendees</div>
+                <div class="stat-item">⏰ 3 Hours</div>
+                <div class="stat-item">🎯 1 Speaker</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="timeline-item">
+        <div class="timeline-date">August 2025</div>
+        <div class="timeline-content">
+            <h3 class="event-title">💻 ACM summit Discussion </h3>
+            <p class="event-description">
+               Something exciting is coming your way! Stay tuned as we prepare to unveil our next big event.  
+            </p>
+            <div class="photo-grid">
+                <div class="photo-item" data-src="{% static 'images/acm_latest_event/pic_2.JPG' %}">
+                    <img src="{% static 'images/acm_latest_event/pic_2.JPG' %}" alt="Photo 1">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_latest_event/pic_4.JPG' %}">
+                    <img src="{% static 'images/acm_latest_event/pic_4.JPG' %}" alt="Photo 2">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_latest_event/pic_1.JPG' %}">
+                    <img src="{% static 'images/acm_latest_event/pic_1.JPG' %}" alt="Photo 3">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_latest_event/pic_3.JPG' %}">
+                    <img src="{% static 'images/acm_latest_event/pic_3.JPG' %}" alt="Photo 4">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_latest_event/pic_5.JPG' %}">
+                    <img src="{% static 'images/acm_latest_event/pic_5.JPG' %}" alt="Photo 5">
+                </div>
+                <div class="photo-item" data-src="{% static 'images/acm_latest_event/pic_6.JPG' %}">
+                    <img src="{% static 'images/acm_latest_event/pic_6.JPG' %}" alt="Photo 6">
+                </div>
+            </div>
+            <div class="event-stats">
+                <div class="stat-item">👥 100+ Participants</div>
+                <div class="stat-item">⏰ 3 Days</div>
+                <div class="stat-item">📅 Date: TBA</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="">
+    </div>
+</div>
+{% endblock %}
