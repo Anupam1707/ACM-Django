@@ -28,8 +28,8 @@ class MainConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'main'
 
-    def ready(self):
-        if 'runserver' in sys.argv:
-            ping_thread = threading.Thread(target=ping_server)
-            ping_thread.daemon = True
-            ping_thread.start()
+    # def ready(self):
+    #     if 'runserver' in sys.argv:
+    #         ping_thread = threading.Thread(target=ping_server)
+    #         ping_thread.daemon = True
+    #         ping_thread.start()
