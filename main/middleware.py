@@ -19,3 +19,4 @@ class AllowIframeOnlyMiddleware:
                     return self.get_response(request)
 
         return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
+x

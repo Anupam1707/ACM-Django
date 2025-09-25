@@ -88,7 +88,7 @@
 }
 
 .timeline-content {
-    width: 40%;
+    width: 45%;
     background: var(--card-gradient);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -106,11 +106,11 @@
 
 .timeline-item:nth-child(odd) .timeline-content {
     margin-left: auto;
-    margin-right: 60%;
+    margin-right: 55%;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-    margin-left: 60%;
+    margin-left: 55%;
 }
 
 .timeline-date {
