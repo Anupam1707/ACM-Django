@@ -23,6 +23,7 @@
     padding: 60px 20px;
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(10px);
+    margin-top: 80px;
 }
 
 .header h1 {
