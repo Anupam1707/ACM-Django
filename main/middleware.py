@@ -7,7 +7,7 @@ class AllowIframeOnlyMiddleware:
 
     def __call__(self, request):
         # return self.get_response(request)
-        if any(segment in request.path for segment in ["static", "media"]):
+        if any(segment in request.path for segment in ["static", "media", "admin"]):
             return self.get_response(request)
 
         allowed_referers = ['https://nmimsindore.acm.org', 'https://acm-django.onrender.com', 'https://acmnmims.pythonanywhere.com']
