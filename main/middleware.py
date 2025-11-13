@@ -6,7 +6,7 @@ class AllowIframeOnlyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        return self.get_response(request)
+        # return self.get_response(request)
         if any(segment in request.path for segment in ["static", "media", "admin"]):
             return self.get_response(request)
 
