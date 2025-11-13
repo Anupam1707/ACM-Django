@@ -6,7 +6,7 @@ class AllowIframeOnlyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # return self.get_response(request)
+        return self.get_response(request)
         if any(segment in request.path for segment in ["static", "media", "admin"]):
             return self.get_response(request)
 
@@ -18,4 +18,4 @@ class AllowIframeOnlyMiddleware:
                 if referer.startswith(allowed_referer):
                     return self.get_response(request)
 
-        return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p>")
+        return HttpResponseForbidden("<h1>403 Forbidden</h1><p>Direct access is not allowed.</p><p>Access at https://nmimsindore.acm.org/</p>")
