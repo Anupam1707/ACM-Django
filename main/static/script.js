@@ -353,19 +353,19 @@ document.addEventListener('DOMContentLoaded', function() {
         photoItems.forEach(item => {
             item.addEventListener('click', () => {
                 const imageSrc = item.getAttribute('data-src');
-                modal.style.display = 'block';
+                modal.classList.add('show');
                 modalImage.src = imageSrc;
             });
         });
 
         const closeBtn = modal.querySelector('.close');
         closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+            modal.classList.remove('show');
         });
 
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
-                modal.style.display = 'none';
+                modal.classList.remove('show');
             }
         });
     }
