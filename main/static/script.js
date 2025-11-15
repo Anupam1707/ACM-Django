@@ -246,62 +246,7 @@ function initSocialLinkEffects() {
     });
 }
 
-function initCursorTrail() {
-    const trail = [];
-    const trailLength = 15;
 
-    for (let i = 0; i < trailLength; i++) {
-        const dot = document.createElement('div');
-        dot.style.position = 'fixed';
-        dot.style.width = (6 - i * 0.3) + 'px';
-        dot.style.height = (6 - i * 0.3) + 'px';
-        dot.style.background = `rgba(139, 92, 246, ${(trailLength - i) / trailLength * 0.7})`;
-        dot.style.borderRadius = '50%';
-        dot.style.pointerEvents = 'none';
-        dot.style.zIndex = '9998';
-        dot.style.transition = 'opacity 0.3s ease';
-        document.body.appendChild(dot);
-        trail.push(dot);
-    }
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let isMoving = false;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        isMoving = true;
-
-        trail.forEach(dot => dot.style.opacity = 1);
-
-        clearTimeout(window.cursorTimeout);
-        window.cursorTimeout = setTimeout(() => {
-            isMoving = false;
-            trail.forEach(dot => dot.style.opacity = 0);
-        }, 2000);
-    });
-
-    function updateTrail() {
-        let x = mouseX;
-        let y = mouseY;
-
-        trail.forEach((dot, index) => {
-            dot.style.left = x - (6 - index * 0.3) / 2 + 'px';
-            dot.style.top = y - (6 - index * 0.3) / 2 + 'px';
-
-            const nextDot = trail[index + 1];
-            if (nextDot) {
-                x += (parseFloat(nextDot.style.left) - x) * 0.4;
-                y += (parseFloat(nextDot.style.top) - y) * 0.4;
-            }
-        });
-
-        requestAnimationFrame(updateTrail);
-    }
-
-    updateTrail();
-}
 
 function initMagneticEffect() {
     const cards = document.querySelectorAll('.feature-card');
@@ -396,7 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
     initParallaxEffects();
     initSocialLinkEffects();
-    initCursorTrail();
     initMagneticEffect();
     initKeyboardNavigation();
 
